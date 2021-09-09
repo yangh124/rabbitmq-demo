@@ -8,3 +8,8 @@ spring:
     publisher-returns: true
     template:
       mandatory: true
+    listener:
+      simple:
+        acknowledge-mode: manual
+      direct:
+        acknowledge-mode: manual

@@ -35,8 +35,8 @@ public class QueueConfig {
     public Queue myTtlQueue() {
         return QueueBuilder
                 .durable("my.ttl.queue")
-                .deadLetterExchange("my-topic-exchange")
-                .deadLetterRoutingKey("my.ttl.key")
+                .deadLetterExchange("my-direct-exchange")//到期后转发的交换机
+                .deadLetterRoutingKey("my.simple.key")//到期后转发的路由键
                 //.ttl(TTL)
                 .build();
     }

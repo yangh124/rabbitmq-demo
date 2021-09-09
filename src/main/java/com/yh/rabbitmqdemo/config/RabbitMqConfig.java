@@ -65,16 +65,14 @@ public class RabbitMqConfig {
             /**
              * 1.做好消息确认机制
              * 2.每一个发送消息都在数据库做好记录，定期将失败的消息再发送一遍
-             * @param correlationData 相关数据
+             * @param correlationData 回调信息
              * @param ack   是否成功
              * @param cause 原因
              */
             @Override
             public void confirm(CorrelationData correlationData, boolean ack, String cause) {
-                if (ack) {
-                    log.info("发送成功->{}", JSONObject.toJSONString(correlationData));
-                } else {
-                    log.info("发送成功->{},case->{}", JSONObject.toJSONString(correlationData), cause);
+                if (!ack) {
+                    log.error("发送失败->{},case->{}", JSONObject.toJSONString(correlationData), cause);
                 }
             }
         };
