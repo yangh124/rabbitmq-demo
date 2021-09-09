@@ -31,7 +31,7 @@ public class ExchangeConfig {
         return ExchangeBuilder.fanoutExchange("my-fanout-exchange").durable(true).build();
     }
 
-    @Bean("myFanoutExchange")
+    @Bean("myHeadsExchange")
     public Exchange myHeadersExchange() {
         return ExchangeBuilder.headersExchange("my-headers-exchange").durable(true).build();
     }
