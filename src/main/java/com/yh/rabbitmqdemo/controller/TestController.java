@@ -27,13 +27,13 @@ public class TestController {
 
     @GetMapping("/sendttl")
     public String sendTtlMsg() {
-        log.info("send ttl msg success");
         int ttl = 60 * 1000;
         rabbitTemplate.convertAndSend("my-direct-exchange", "my.ttl.key", "哈哈哈哈哈哈哈～", message -> {
-            //给消息设置延迟毫秒值
+            // 给消息设置延迟毫秒值
             message.getMessageProperties().setExpiration(String.valueOf(ttl));
             return message;
         });
+        log.info("send ttl msg success");
         return "success";
     }
 
