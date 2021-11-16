@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * 定义交换机
+ * 这里定义了所有类型的交换机（四种）
+ * 方便学习测试
  * <p>
  * durable  消息持久化
  *

@@ -16,6 +16,9 @@ public class QueueConfig {
 
     // private static final int TTL = 30 * 60 * 1000;
 
+    /**
+     * 普通队列
+     */
     @Bean("mySimpleQueue")
     public Queue mySimpleQueue() {
         return QueueBuilder.durable("my.simple.queue").build();
@@ -33,7 +36,7 @@ public class QueueConfig {
         return QueueBuilder.durable("my.ttl.queue")
                 // 到期后转发的交换机
                 .deadLetterExchange("my-direct-exchange")
-                // 到期后转发的交换机
+                // 到期后转发的路由键
                 .deadLetterRoutingKey("my.simple.key")
                 // .ttl(TTL)
                 .build();

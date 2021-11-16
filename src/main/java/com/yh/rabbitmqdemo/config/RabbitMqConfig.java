@@ -33,6 +33,9 @@ public class RabbitMqConfig {
     }
 
 
+    /**
+     * 配置消息转换器
+     */
     @Bean
     public MessageConverter messageConverter() {
         return new Jackson2JsonMessageConverter();
@@ -60,7 +63,8 @@ public class RabbitMqConfig {
      */
 
     private void initRabbitTemplate(RabbitTemplate rabbitTemplate) {
-        //Publisher -> Broker
+
+        //Publisher -> Broker  生产者发送消息至Broker 回调
         RabbitTemplate.ConfirmCallback confirmCallback = new RabbitTemplate.ConfirmCallback() {
             /**
              * 1.做好消息确认机制
@@ -77,6 +81,7 @@ public class RabbitMqConfig {
             }
         };
         rabbitTemplate.setConfirmCallback(confirmCallback);
+
         /**
          * 消息失败返回   Exchange  ->  Queue
          * (例如路由至队列失败)

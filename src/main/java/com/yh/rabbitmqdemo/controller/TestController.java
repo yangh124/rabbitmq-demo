@@ -33,7 +33,6 @@ public class TestController {
             message.getMessageProperties().setExpiration(String.valueOf(ttl));
             return message;
         });
-        log.info("send ttl msg success");
         return "success";
     }
 

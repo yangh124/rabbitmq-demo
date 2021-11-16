@@ -28,6 +28,7 @@ public class MyListener {
             Boolean redelivered = message.getMessageProperties().getRedelivered();
             if (redelivered) {
                 log.error("重复消费->{}", res);
+                return;
             }
 
             // 消费消息...
@@ -51,6 +52,7 @@ public class MyListener {
             Boolean redelivered = message.getMessageProperties().getRedelivered();
             if (redelivered) {
                 log.error("重复消费->{}", res);
+                return;
             }
 
             // 消费消息...
