@@ -39,7 +39,7 @@ public class MyListener {
         } catch (Exception e) {
             log.error("消费消息失败->{}", res);
             //消费失败，打回去
-            channel.basicAck(message.getMessageProperties().getDeliveryTag(), true);
+            channel.basicNack(message.getMessageProperties().getDeliveryTag(), false, true);
             throw e;
         }
     }
